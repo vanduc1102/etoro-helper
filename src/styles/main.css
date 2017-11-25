@@ -1,6 +1,7 @@
 span.etoro-helper-price{
 	position: absolute;
 	right: 0;
+	top: -10px;
 	font-size: 12px;
 }
 span.etoro-helper-price.need-update {
@@ -9,8 +10,10 @@ span.etoro-helper-price.need-update {
 }
 .portfolio-overview span.etoro-helper-price{
 	position: relative;
-	right: 25px;
+	right: 50px;
+	top: -15px;
 }
 .market-card-ph span.etoro-helper-price{
 	right: 10px;
+	top: 0;
 }

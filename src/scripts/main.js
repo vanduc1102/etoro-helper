@@ -102,7 +102,17 @@
   }
 
   function toFixed(number) {
-    return Math.floor(number * 1000) === 0 ? number.toFixed(5) : number.toFixed(3);
+    let result;
+    if (number > 1000) {
+      result = Math.round(number);
+    } else if (number > 100) {
+      result = number.toFixed(1);
+    } else if (number > 10) {
+      result = number.toFixed(2);
+    } else {
+      result = Math.floor(number * 1000) === 0 ? number.toFixed(5) : number.toFixed(3);
+    }
+    return result;
   }
 
   function updatePrice() {
