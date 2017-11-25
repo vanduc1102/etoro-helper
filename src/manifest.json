@@ -13,6 +13,13 @@
         "tabs",
         "*://*/*"
     ],
+    "content_scripts": [
+      {
+        "matches": ["https://*.etoro.com/*"],
+        "css":["styles/main.css"],
+        "js": ["scripts/main.js"]
+      }
+    ],
     "browser_action": {
         "default_title": "eToro Helper",
         "default_icon": "assets/etoro-64x64.png"

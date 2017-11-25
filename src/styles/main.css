@@ -1,0 +1,13 @@
+span.etoro-helper-price{
+	position: absolute;
+	right: 0;
+	font-size: 12px;
+}
+span.etoro-helper-price.need-update {
+	color:red;
+	font-weight: bold;
+}
+.portfolio-overview span.etoro-helper-price{
+	position: relative;
+	right: 25px;
+}
