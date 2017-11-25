@@ -11,3 +11,6 @@ span.etoro-helper-price.need-update {
 	position: relative;
 	right: 25px;
 }
+.market-card-ph span.etoro-helper-price{
+	right: 10px;
+}
