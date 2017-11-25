@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build" : "node build/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^4.11.0",
-    "eslint-config-airbnb": "^16.1.0"
+    "eslint-config-airbnb": "^16.1.0",
+    "archiver": "^2.1.0"
   }
 }
