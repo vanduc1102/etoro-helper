@@ -21,8 +21,11 @@
           let cellNameEl = el.querySelector('.table-name-cell');
           let tableInfoEl = el.querySelector('.table-info');
           let sellBtnEl = tableInfoEl.querySelector('.etoro-sell-button');
-          let sellPrice = sellBtnEl.querySelector('.etoro-price-value').textContent.trim();
           let buyBtnEl = tableInfoEl.querySelector('.etoro-buy-button');
+          if (!sellBtnEl || !buyBtnEl) {
+            return;
+          }
+          let sellPrice = sellBtnEl.querySelector('.etoro-price-value').textContent.trim();
           let buyPrice = buyBtnEl.querySelector('.etoro-price-value').textContent.trim();
           let spreadPrice = Number(buyPrice) - Number(sellPrice);
           let spreadPercent = (spreadPrice / buyPrice) * 100;
@@ -82,8 +85,11 @@
         }
         let cellNameEl = el.querySelector('.ui-table-static-cell');
         let sellBtnEl = el.querySelector('.etoro-sell-button');
-        let sellPrice = sellBtnEl.querySelector('.etoro-price-value').textContent.trim();
         let buyBtnEl = el.querySelector('.etoro-buy-button');
+        if (!sellBtnEl || !buyBtnEl) {
+          return;
+        }
+        let sellPrice = sellBtnEl.querySelector('.etoro-price-value').textContent.trim();
         let buyPrice = buyBtnEl.querySelector('.etoro-price-value').textContent.trim();
         let spreadPrice = Number(buyPrice) - Number(sellPrice);
         let spreadPercent = (spreadPrice / buyPrice) * 100;
