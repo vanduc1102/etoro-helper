@@ -1,3 +1,9 @@
 body{
-	background: red;
+	background: #D3CCE3;
+	background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);
+	background: linear-gradient(to right, #E9E4F0, #D3CCE3);
+}
+.wrapper{
+	display: flex;
+	flex-flow: column;
 }
