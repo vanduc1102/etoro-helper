@@ -64,14 +64,12 @@
       priceNodeEl.appendChild(node);
       parent.appendChild(priceNodeEl);
     } else if (priceNodeEl.innerHTML !== text) {
+      let needUpdateCls = priceNodeEl.innerHTML.trim() > text ? 'need-update-up' : 'need-update-down';
       priceNodeEl.innerHTML = text;
-      let needUpdateCls = 'need-update';
-      if (priceNodeEl.className.indexOf(needUpdateCls) === -1) {
-        priceNodeEl.classList.add(needUpdateCls);
-        setTimeout(() =>{
-          priceNodeEl.classList.remove(needUpdateCls);
-        }, 1000, priceNodeEl);
-      }
+      priceNodeEl.classList.add(needUpdateCls);
+      setTimeout(() =>{
+        priceNodeEl.classList.remove(needUpdateCls);
+      }, 1000, priceNodeEl);
     }
   }
 

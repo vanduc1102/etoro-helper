@@ -4,8 +4,12 @@ span.etoro-helper-price{
 	top: -10px;
 	font-size: 12px;
 }
-span.etoro-helper-price.need-update {
+span.etoro-helper-price.need-update-up {
 	color:red;
+	font-weight: bold;
+}
+span.etoro-helper-price.need-update-down {
+	color:green;
 	font-weight: bold;
 }
 .portfolio-overview span.etoro-helper-price{
