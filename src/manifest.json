@@ -29,6 +29,5 @@
         "48": "assets/etoro-64x64.png",
         "128": "assets/etoro-128x128.png"
     },
-    "options_page": "options/index.html",
     "manifest_version": 2
 }
