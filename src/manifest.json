@@ -9,7 +9,7 @@
     },
     "permissions": [
         "contextMenus",
-        "storage",
+        "activeTab",
         "tabs",
         "*://*/*"
     ],
