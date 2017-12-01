@@ -1,6 +1,11 @@
+'use strict';
+
 var fs = require('fs');
 var archiver = require('archiver');
+const del = require('del');
 const manifest = require('../src/manifest.json');
+
+del.sync(['dist']);
 
 var version = 'etoro-helper-v' + manifest.version + '.zip';
 var distPath = './dist/';
