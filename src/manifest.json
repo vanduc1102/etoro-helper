@@ -1,11 +1,10 @@
 {
-    "name": "eToro Helper",
-    "short_name": "eToro-Helper",
-    "description": "Showing spread prices and percentages for a better decision.",
+    "name": "eToro Helper for Firefox",
+    "short_name": "eToro Helper for Firefox",
+    "description": "Showing spread prices and percentages for a better decision. See source code https://github.com/vanduc1102/etoro-helper . Donate https://vanduc1102.github.io/donate/",
     "version": "1.0.0",
     "background": {
-        "scripts": [ "background.js" ],
-        "persistent": false
+        "scripts": [ "background.js" ]
     },
     "permissions": [
         "contextMenus",
@@ -29,6 +28,5 @@
         "48": "assets/etoro-64x64.png",
         "128": "assets/etoro-128x128.png"
     },
-    "options_page": "options.html",
     "manifest_version": 2
 }
