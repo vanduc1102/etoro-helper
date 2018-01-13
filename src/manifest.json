@@ -8,10 +8,9 @@
         "persistent": false
     },
     "permissions": [
-        "contextMenus",
         "activeTab",
         "tabs",
-        "*://*/*"
+        "https://*.etoro.com/*"
     ],
     "content_scripts": [
       {
