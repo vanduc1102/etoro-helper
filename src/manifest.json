@@ -7,10 +7,9 @@
         "scripts": [ "background.js" ]
     },
     "permissions": [
-        "contextMenus",
         "activeTab",
         "tabs",
-        "*://*/*"
+        "https://*.etoro.com/*"
     ],
     "content_scripts": [
       {
