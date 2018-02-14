@@ -28,7 +28,7 @@
           let sellPrice = sellBtnEl.querySelector('.etoro-price-value').textContent.trim();
           let buyPrice = buyBtnEl.querySelector('.etoro-price-value').textContent.trim();
           let spreadPrice = Number(buyPrice) - Number(sellPrice);
-          let spreadPercent = (spreadPrice / buyPrice) * 100;
+          let spreadPercent = (spreadPrice / sellPrice) * 100;
           let spreadAndPrice = '$' + toFixed(spreadPrice) + ' - ' + spreadPercent.toFixed(3) + '%';
           createSpanNode(cellNameEl, spreadAndPrice);
         });
@@ -44,7 +44,7 @@
           let buyPrice = btnBuyEl.querySelector('.etoro-price-value').textContent.trim();
           let marketHeadEl = cardEl.querySelector('.market-card-head');
           let spreadPrice = Number(buyPrice) - Number(sellPrice);
-          let spreadPercent = (spreadPrice / buyPrice) * 100;
+          let spreadPercent = (spreadPrice / sellPrice) * 100;
           let spreadAndPrice = '$' + toFixed(spreadPrice) + ' - ' + spreadPercent.toFixed(3) + '%';
           createSpanNode(marketHeadEl, spreadAndPrice);
         });
@@ -90,7 +90,7 @@
         let sellPrice = sellBtnEl.querySelector('.etoro-price-value').textContent.trim();
         let buyPrice = buyBtnEl.querySelector('.etoro-price-value').textContent.trim();
         let spreadPrice = Number(buyPrice) - Number(sellPrice);
-        let spreadPercent = (spreadPrice / buyPrice) * 100;
+        let spreadPercent = (spreadPrice / sellPrice) * 100;
         let spreadAndPrice = '$' + toFixed(spreadPrice) + ' - ' + spreadPercent.toFixed(3) + '%';
         createSpanNode(cellNameEl, spreadAndPrice);
       });
