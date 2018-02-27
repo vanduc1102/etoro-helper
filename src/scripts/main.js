@@ -3,7 +3,7 @@
 (function () {
   function getOptions() {
     return {
-      refreshTime: 10000
+      refreshTime: 5000
     };
   }
 
