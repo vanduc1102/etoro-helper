@@ -2,7 +2,7 @@
     "name": "eToro Helper",
     "short_name": "eToro-Helper",
     "description": "Showing spread prices and percentages for a better decision.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "background": {
         "scripts": [ "background.js" ],
         "persistent": false
