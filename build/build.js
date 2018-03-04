@@ -7,7 +7,7 @@ const manifest = require('../src/manifest.json');
 
 del.sync(['dist']);
 
-var version = 'etoro-helper-v' + manifest.version + '.zip';
+var version = manifest.name.replace(' ', '-').toLowerCase() + '-v' + manifest.version + '.zip';
 var distPath = './dist/';
 if (!fs.existsSync(distPath)) {
   fs.mkdirSync(distPath);
