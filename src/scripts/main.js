@@ -9,44 +9,37 @@
 
   function initWatchListView() {
     try {
-      let mainContentEl = document.querySelector('.main-app-view .main-content');
-      let isListView = mainContentEl.className.indexOf('list-view') > 0;
+      let mainListViewElement = document.querySelector('[automation-id="watchlist-watchlist-sub-view-list"]');
+      let isListView = mainListViewElement && mainListViewElement.className.includes('list-view');
       if (isListView) {
-        let marketEl = mainContentEl.querySelector('.table-body.market');
-        let tabletRowEls = marketEl.querySelectorAll('.table-body .table-row');
-        tabletRowEls.forEach((el, index) => {
-          if (el.className.indexOf('empty') !== -1) {
-            return;
-          }
-          let cellNameEl = el.querySelector('.table-name-cell');
-          let tableInfoEl = el.querySelector('.table-info');
-          let sellBtnEl = tableInfoEl.querySelector('.etoro-sell-button');
-          let buyBtnEl = tableInfoEl.querySelector('.etoro-buy-button');
+        let tabletRowEls = mainListViewElement.querySelectorAll('[automation-id="watchlist-list-instruments-list"]');
+        tabletRowEls.forEach((rowElement) => {
+          let tableInfoEl = rowElement.querySelector('[automation-id="watchlist-item-grid-instrument-buy-sell-container"]');
+          let sellBtnEl = tableInfoEl.querySelector('[automation-id="buy-sell-button-container-sell"]');
+          let buyBtnEl = tableInfoEl.querySelector('[automation-id="buy-sell-button-container-buy"]');
           if (!sellBtnEl || !buyBtnEl) {
             return;
           }
-          let sellPrice = sellBtnEl.querySelector('.etoro-price-value').textContent.trim();
-          let buyPrice = buyBtnEl.querySelector('.etoro-price-value').textContent.trim();
+          let sellPrice = sellBtnEl.querySelector('[automation-id="buy-sell-button-rate-value"]').textContent.trim();
+          let buyPrice = buyBtnEl.querySelector('[automation-id="buy-sell-button-rate-value"]').textContent.trim();
           let spreadPrice = Number(buyPrice) - Number(sellPrice);
           let spreadPercent = (spreadPrice / sellPrice) * 100;
-          let spreadAndPrice = '$' + toFixed(spreadPrice) + ' - ' + spreadPercent.toFixed(3) + '%';
-          createSpanNode(cellNameEl, spreadAndPrice);
+          addSpreadTextElement(rowElement, spreadPrice, spreadPercent);
         });
       } else {
-        let cardListEls = mainContentEl.querySelectorAll('.market-card-ph.pointer');
-        cardListEls.forEach((cardEl, index) => {
-          let btnSellEl = cardEl.querySelector('.etoro-sell-button');
-          let btnBuyEl = cardEl.querySelector('.etoro-buy-button');
+        let cardElementList = document.querySelectorAll('[automation-id="watchlist-grid-instruments-list"]');
+        cardElementList.forEach((cardElement) => {
+          let btnSellEl = cardElement.querySelector('[automation-id="buy-sell-button-container-sell"]');
+          let btnBuyEl = cardElement.querySelector('[automation-id="buy-sell-button-container-buy"]');
           if (!btnBuyEl || !btnSellEl) {
             return;
           }
-          let sellPrice = btnSellEl.querySelector('.etoro-price-value').textContent.trim();
-          let buyPrice = btnBuyEl.querySelector('.etoro-price-value').textContent.trim();
-          let marketHeadEl = cardEl.querySelector('.market-card-head');
+          let sellPrice = btnSellEl.querySelector('[automation-id="buy-sell-button-rate-value"]').textContent.trim();
+          let buyPrice = btnBuyEl.querySelector('[automation-id="buy-sell-button-rate-value"]').textContent.trim();
+          // let marketHeadEl = cardElement.querySelector('.market-card-head');
           let spreadPrice = Number(buyPrice) - Number(sellPrice);
           let spreadPercent = (spreadPrice / sellPrice) * 100;
-          let spreadAndPrice = '$' + toFixed(spreadPrice) + ' - ' + spreadPercent.toFixed(3) + '%';
-          createSpanNode(marketHeadEl, spreadAndPrice);
+          addSpreadTextElement(cardElement, spreadPrice, spreadPercent);
         });
       }
     } catch (e) {
@@ -54,15 +47,16 @@
     }
   }
 
-  function createSpanNode(parent, text) {
+  function addSpreadTextElement(parentElement, spreadPrice, spreadPercent) {
+    let text = '$' + toFixed(spreadPrice) + ' - ' + spreadPercent.toFixed(3) + '%';
     let clsHelperPrice = 'etoro-helper-price';
-    let priceNodeEl = parent.querySelector('.' + clsHelperPrice);
+    let priceNodeEl = parentElement.querySelector('.' + clsHelperPrice);
     if (!priceNodeEl) {
       let priceNodeEl = document.createElement('span');
       priceNodeEl.className += clsHelperPrice;
       let node = document.createTextNode(text);
       priceNodeEl.appendChild(node);
-      parent.appendChild(priceNodeEl);
+      parentElement.appendChild(priceNodeEl);
     } else if (priceNodeEl.innerHTML !== text) {
       let needUpdateCls = priceNodeEl.innerHTML.trim() > text ? 'need-update-up' : 'need-update-down';
       priceNodeEl.innerHTML = text;

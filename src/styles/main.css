@@ -1,23 +1,27 @@
-span.etoro-helper-price{
+[automation-id="watchlist-list-instruments-list"] span.etoro-helper-price {
+	left: 5px;
+	top: -2px;
+}
+
+[automation-id="watchlist-grid-instruments-list"] span.etoro-helper-price {
+	left: 5px;
+	top: 0;
+}
+
+[automation-id="watchlist-list-instruments-list"] {
+	position: relative;
+}
+
+span.etoro-helper-price {
 	position: absolute;
-	right: 0;
-	top: -10px;
+	font-weight: bold;
 	font-size: 12px;
 }
+
 span.etoro-helper-price.need-update-up {
 	color:red;
-	font-weight: bold;
 }
+
 span.etoro-helper-price.need-update-down {
 	color:green;
-	font-weight: bold;
-}
-.portfolio-overview span.etoro-helper-price{
-	position: relative;
-	right: 50px;
-	top: -15px;
-}
-.market-card-ph span.etoro-helper-price{
-	right: 10px;
-	top: 0;
 }
