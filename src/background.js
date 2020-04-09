@@ -1,7 +1,16 @@
 /* eslint no-undef: "off" */
-
+const ETORO_DOMAIN = 'etoro.com';
 chrome.browserAction.onClicked.addListener(function (tab) {
-  chrome.tabs.executeScript(tab.id, {
-    file: 'scripts/browser-action-script.js'
-  });
+  if (tab.url.includes(ETORO_DOMAIN)) {
+    return;
+  }
+  chrome.tabs.executeScript(
+    tab.id,
+    {
+      file: 'scripts/browser-action-script.js'
+    },
+    (results) => {
+      console.log('background results: ', results);
+    }
+  );
 });

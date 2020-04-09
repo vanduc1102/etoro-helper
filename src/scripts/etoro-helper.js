@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+(() => {
   function getOptions() {
     return {
       refreshTime: 5000
@@ -10,7 +10,9 @@
   function initWatchListView() {
     try {
       let mainListViewElement = document.querySelector('[automation-id="watchlist-watchlist-sub-view-list"]');
-      let isListView = mainListViewElement && mainListViewElement.className.includes('list-view');
+      let isListView =
+        mainListViewElement &&
+        mainListViewElement.className.includes('list-view');
       if (isListView) {
         let tabletRowEls = mainListViewElement.querySelectorAll('[automation-id="watchlist-list-instruments-list"]');
         tabletRowEls.forEach((rowElement) => {
@@ -20,8 +22,12 @@
           if (!sellBtnEl || !buyBtnEl) {
             return;
           }
-          let sellPrice = sellBtnEl.querySelector('[automation-id="buy-sell-button-rate-value"]').textContent.trim();
-          let buyPrice = buyBtnEl.querySelector('[automation-id="buy-sell-button-rate-value"]').textContent.trim();
+          let sellPrice = sellBtnEl
+            .querySelector('[automation-id="buy-sell-button-rate-value"]')
+            .textContent.trim();
+          let buyPrice = buyBtnEl
+            .querySelector('[automation-id="buy-sell-button-rate-value"]')
+            .textContent.trim();
           let spreadPrice = Number(buyPrice) - Number(sellPrice);
           let spreadPercent = (spreadPrice / sellPrice) * 100;
           addSpreadTextElement(rowElement, spreadPrice, spreadPercent);
@@ -34,8 +40,12 @@
           if (!btnBuyEl || !btnSellEl) {
             return;
           }
-          let sellPrice = btnSellEl.querySelector('[automation-id="buy-sell-button-rate-value"]').textContent.trim();
-          let buyPrice = btnBuyEl.querySelector('[automation-id="buy-sell-button-rate-value"]').textContent.trim();
+          let sellPrice = btnSellEl
+            .querySelector('[automation-id="buy-sell-button-rate-value"]')
+            .textContent.trim();
+          let buyPrice = btnBuyEl
+            .querySelector('[automation-id="buy-sell-button-rate-value"]')
+            .textContent.trim();
           // let marketHeadEl = cardElement.querySelector('.market-card-head');
           let spreadPrice = Number(buyPrice) - Number(sellPrice);
           let spreadPercent = (spreadPrice / sellPrice) * 100;
@@ -48,7 +58,8 @@
   }
 
   function addSpreadTextElement(parentElement, spreadPrice, spreadPercent) {
-    let text = '$' + toFixed(spreadPrice) + ' - ' + spreadPercent.toFixed(3) + '%';
+    let text =
+      '$' + toFixed(spreadPrice) + ' - ' + spreadPercent.toFixed(3) + '%';
     let clsHelperPrice = 'etoro-helper-price';
     let priceNodeEl = parentElement.querySelector('.' + clsHelperPrice);
     if (!priceNodeEl) {
@@ -58,12 +69,19 @@
       priceNodeEl.appendChild(node);
       parentElement.appendChild(priceNodeEl);
     } else if (priceNodeEl.innerHTML !== text) {
-      let needUpdateCls = priceNodeEl.innerHTML.trim() > text ? 'need-update-up' : 'need-update-down';
+      let needUpdateCls =
+        priceNodeEl.innerHTML.trim() > text
+          ? 'need-update-up'
+          : 'need-update-down';
       priceNodeEl.innerHTML = text;
       priceNodeEl.classList.add(needUpdateCls);
-      setTimeout(() =>{
-        priceNodeEl.classList.remove(needUpdateCls);
-      }, 1000, priceNodeEl);
+      setTimeout(
+        () => {
+          priceNodeEl.classList.remove(needUpdateCls);
+        },
+        1000,
+        priceNodeEl
+      );
     }
   }
 
@@ -81,11 +99,16 @@
         if (!sellBtnEl || !buyBtnEl) {
           return;
         }
-        let sellPrice = sellBtnEl.querySelector('.etoro-price-value').textContent.trim();
-        let buyPrice = buyBtnEl.querySelector('.etoro-price-value').textContent.trim();
+        let sellPrice = sellBtnEl
+          .querySelector('.etoro-price-value')
+          .textContent.trim();
+        let buyPrice = buyBtnEl
+          .querySelector('.etoro-price-value')
+          .textContent.trim();
         let spreadPrice = Number(buyPrice) - Number(sellPrice);
         let spreadPercent = (spreadPrice / sellPrice) * 100;
-        let spreadAndPrice = '$' + toFixed(spreadPrice) + ' - ' + spreadPercent.toFixed(3) + '%';
+        let spreadAndPrice =
+          '$' + toFixed(spreadPrice) + ' - ' + spreadPercent.toFixed(3) + '%';
         createSpanNode(cellNameEl, spreadAndPrice);
       });
     } catch (e) {
@@ -102,7 +125,8 @@
     } else if (number > 10) {
       result = number.toFixed(2);
     } else {
-      result = Math.floor(number * 1000) === 0 ? number.toFixed(5) : number.toFixed(3);
+      result =
+        Math.floor(number * 1000) === 0 ? number.toFixed(5) : number.toFixed(3);
     }
     return result;
   }
@@ -122,4 +146,4 @@
   }
 
   start();
-}());
+})();
